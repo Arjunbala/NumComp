@@ -1,0 +1,4 @@
+El programa ha sido modificado para que funcione correctamente en windows 7 y windows vista.
+
+Si tuvierais algun problema, realizad las instrucciones del documento DEV C++ Para Vista y 7.pdf y os funcionara
+correctamente. Pero ya dejo claro que no es necesario, solo es por si en algún pc  surgiera algun problema.

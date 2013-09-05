@@ -1,0 +1,80 @@
+void iterative()
+{
+float x,xn,e;
+cout<<"Enter initial approximation"<<endl;
+cin>>x;
+cout<<"Enter the error"<<endl;
+cin>>e;
+if(derivative(x)>=1)
+	cout<<"Approximation not valid"<endl;
+else
+{
+	xn = func(x);
+	while(xn-x > e)
+	{
+		x = xn;
+		xn = func(x);
+	}
+	cout<<"The root is "<<xn<<endl;
+}
+}
+
+void newton_raphson()
+{
+	float x,xn,e;
+	cout<<"Enter initial approximation"<<endl;
+	cin>>x;
+	cout<<"Enter error"<<endl;
+	cin>>e;
+	xn = x - (func(x)/derivative(x));
+	while(xn-x > e)
+	{
+	x = xn;
+	xn = x - (func(x)/derivative(x));
+	}
+	cout<<"The root is "<<xn<<endl;
+}
+
+void horner()
+{
+	float a[100];
+	char answer[10];
+	int n,syn;
+	cout<<"Enter the degree"<<endl;
+	cin>>n;
+	cout<<"Enter the coefficients"<<endl;
+	for(int i=0;i<=n;i++)
+	cin>>a[i];
+	for(int j=0;j<=9;j++)
+	{
+		if(func(j)*func(j+1) < 0)
+		{
+			syn = j;
+			strcat(answer,j+48);
+			strcat(answer,'.');
+			break;
+		}
+	}
+	for(int k=0;k<3;k++)
+	{
+		for(int l=1;l<n;++l)
+		{
+			a[l] = a[l] - (syn*a[l-1]);
+		}
+		for(int m=0;m<=n;m++)
+		{
+			a[m] = a[m] * pow(10,m);
+		}
+		for(n=0;n<9;n++)
+		{
+			if(func(n)*func(n+1) < 0)
+			{
+				syn = n;
+				strcat(answer,n+48);
+				break;
+			}
+		}
+		
+	}
+	cout<<"Root is "<<answer<<endl;
+}
